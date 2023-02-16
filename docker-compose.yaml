@@ -1,0 +1,27 @@
+version: '3'
+
+services:
+  frontend:
+    build: ./frontend
+    ports:
+      - '3006:3006'
+
+  backend:
+    build: ./backend
+    ports:
+      - '4006:4006'
+    environment:
+      MYSQL_ROOT_PASSWORD: rootpassword
+      MYSQL_DATABASE: webshopdb
+      MYSQL_HOST: db
+      MYSQL_PORT: 3309
+    depends_on:
+      - db
+
+  db:
+    image: mysql:5.7
+    environment:
+      MYSQL_ROOT_PASSWORD: rootpassword
+      MYSQL_DATABASE: webshopdb
+    ports:
+      - '3309:3309'

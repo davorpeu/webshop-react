@@ -4,7 +4,7 @@ services:
   frontend:
     build: ./frontend
     ports:
-      - '3006:3006'
+      - '80:80'
 
   backend:
     build: ./backend
@@ -14,7 +14,7 @@ services:
       MYSQL_ROOT_PASSWORD: rootpassword
       MYSQL_DATABASE: webshopdb
       MYSQL_HOST: db
-      MYSQL_PORT: 3309
+      MYSQL_PORT: 3306
     depends_on:
       - db
 
@@ -24,4 +24,4 @@ services:
       MYSQL_ROOT_PASSWORD: rootpassword
       MYSQL_DATABASE: webshopdb
     ports:
-      - '3309:3309'
+      - '3306:3306'
